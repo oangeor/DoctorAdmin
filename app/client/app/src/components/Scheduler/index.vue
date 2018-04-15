@@ -5,11 +5,7 @@
       <el-menu-item index="2">Week</el-menu-item>
       <el-menu-item index="3">Month</el-menu-item>
       <div class="date col">
-        <!--<button type="button" class="btn">-->
-          <!--<i class="el-icon-date"></i>-->
-        <!--</button>-->
-        <!--<span>2018-05-01</span>-->
-        <el-date-picker v-model="pickerDate" type="date" :clearable="false">
+        <el-date-picker v-model="pickerDate" type="date" :clearable="false" @change="pickNewDate">
 
         </el-date-picker>
       </div>
@@ -23,7 +19,7 @@
         </div>
       </div>
     </el-menu>
-    <div class="scheduler-table">
+    <div class="scheduler-table" v-if="schedulerEvents" v-loading="loading">
 
       <template v-for="item in schedulerEvents">
         <el-row class="event-row">
@@ -34,7 +30,7 @@
             <div class="events" @click="addEvent(item.events.length)">
               <el-row>
                 <template v-for="event in item.events">
-                  <el-col :span="8" class="event" @click="myClick">
+                  <el-col :span="8" class="event">
                     <span @click.stop="eventEdit">{{event.customer.name}}</span>
                   </el-col>
                 </template>
@@ -50,9 +46,28 @@
       <el-dialog title="预约表格" :visible.syc="dialogVisiable" width="30%" :close-on-click-modal="true"
                  @close="dialogVisiable=false">
         <el-form :model="form" label-position="left" label-width="80px">
-          <el-form-item label="名称" style="width: 300px">
-            <el-input v-model="form.name" auto-complete="off"></el-input>
-          </el-form-item>
+
+          <el-row>
+          <el-col :span="12">
+
+            <el-form-item label="名称" >
+              <multiselect
+                v-model="form.customer"
+                :options="customers"
+                @search-change="getRemoteCustomers"
+                placeholder="搜索用户"
+                track-by="name"
+                :custom-label="customLabel"
+                selectLabel="选择"
+              >
+                <span slot="noResult">无结果</span>
+              </multiselect>
+
+            </el-form-item>
+          </el-col>
+
+          </el-row>
+
 
 
           <el-form-item label="医生" style="width: 300px">
@@ -76,7 +91,7 @@
 
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogVisiable=false">取消</el-button>
-          <el-button type="success" @click="dialogVisiable=false">保存</el-button>
+          <el-button type="success" @click="onSubmit">保存</el-button>
         </div>
       </el-dialog>
 
@@ -87,52 +102,46 @@
 </template>
 
 <script>
+  import {formatDate} from '@/utils/time'
+  import Multiselect from 'vue-multiselect'
+  import 'vue-multiselect/dist/vue-multiselect.min.css'
 
-  const generateEvents = () => {
-    let eventItems = [];
-    for (let i = 0; i < 9; i++) {
-      let eventItem;
-      const hour = 9 + i + ":00";
-      eventItem = {
-        hour: hour
-      }
-      eventItem.events = []
-      if (Math.random() < 0.33) {
-        for (let i = 0; i < 3; i++) {
-          if (Math.random() > 0.33) {
-            eventItem.events.push(
-              {
-                customer: {
-                  id: 1,
-                  name: '王大拿'
-                },
-                // user:{
-                //   id:1,
-                //   name:'李护士'
-                // }
-              }
-            )
-          }
-        }
-      }
-      eventItems.push(eventItem)
-    }
-    return eventItems
-  }
 
   export default {
-    name: "index.vue",
+    name: "scheduler",
     data() {
       return {
-        schedulerEvents: generateEvents(),
-        dialogVisiable: false,
-        pickerDate:'2018-05-01',
+        loading: true,
+        dialogVisiable: true,
+        // dialogVisiable: false,
+        pickerDate: '2018-05-01',
+        customers: [{phone:"13512345678",name:"王大拿"}],
         form: {
-          name: ''
+          customer: ''
         }
       }
     },
+    components: {
+      Multiselect
+    },
+    computed: {
+      schedulerEvents() {
+        console.log("get computed")
+        return this.$store.getters.schedule_events
+      }
+    },
+    mounted() {
+      this.initData()
+    },
+    watch:{
+      form(){
+        console.log(form.customer)
+      }
+    },
     methods: {
+      onSubmit() {
+        this.dialogVisiable = false
+      },
       addEvent(eventsLength) {
         if (eventsLength < 3) {
           this.dialogVisiable = true
@@ -140,6 +149,28 @@
       },
       eventEdit() {
         console.log("edit")
+      },
+      pickNewDate() {
+        this.loading = true
+        console.log("xxx")
+        const dateStr = formatDate(this.pickerDate)
+        this.getDateEvents(dateStr)
+      },
+      initData() {
+        console.log('initData')
+        this.getDateEvents()
+      },
+      getDateEvents(dateStr) {
+
+        this.$store.dispatch('pickNewDate', dateStr).then(
+          this.loading = false
+        )
+      },
+      getRemoteCustomers(query) {
+
+      },
+      customLabel(option){
+        return `${option.phone} - ${option.name}`
       }
     }
   }

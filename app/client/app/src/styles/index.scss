@@ -1,5 +1,15 @@
 @import "./element-ui";
 @import "./sidebar";
 
-body {
+.multiselect {
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.multiselect__tags{
+  font-size: 12px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
 }

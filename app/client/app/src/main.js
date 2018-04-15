@@ -9,6 +9,8 @@ import 'normalize.css'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import './mock'
+
 import '@/styles/index.scss'
 
 Vue.use(Element, {size: 'medium'})
