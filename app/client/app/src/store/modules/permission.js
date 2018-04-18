@@ -1,8 +1,12 @@
-import {constantRouterMap} from '@/router'
+import {constantRouterMap, asyncRouterMap} from '@/router'
+
+function filterAsyncRouter(asyncRouterMap, roles) {
+  // pass
+}
 
 const permission = {
   state: {
-    routers: constantRouterMap,
+    routers: constantRouterMap.concat(asyncRouterMap),
     addRouters: [],
   },
   mutations: {
@@ -11,8 +15,6 @@ const permission = {
       state.routers = constantRouterMap.concat(routers)
     }
   },
-  // actions:{
-  // }
 }
 
 export default permission

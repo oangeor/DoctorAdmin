@@ -1,37 +1,24 @@
 <template>
-  <div>
-    <h3>xxx</h3>
-    <multiselect
-      v-model="name"
-      :options="customers"
-      @search-change="getRemoteCustomers"
-      placeholder="搜索用户"
-      track-by="key"
-      label="key"
-    >
-      <span slot="noResult">无结果</span>
-    </multiselect>
+  <div class="dashboard-container">
+    <admin-dashboard></admin-dashboard>
   </div>
 </template>
 
 <script>
-  import Multiselect from 'vue-multiselect'
+  import adminDashboard from './admin'
+
   export default {
     name: "dashboard",
-    data(){
+    data() {
       return {
-        customers:[],
-        name:''
+        customers: [],
+        name: ''
       }
     },
     components: {
-      Multiselect
+      adminDashboard
     },
-    methods:{
-      getRemoteCustomers(){
-
-      }
-    }
+    methods: {}
 
   }
 </script>

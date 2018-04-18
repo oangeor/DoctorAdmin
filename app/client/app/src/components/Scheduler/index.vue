@@ -43,7 +43,7 @@
 
       </template>
 
-      <el-dialog title="预约表格" :visible.syc="dialogVisiable" width="30%" :close-on-click-modal="true"
+      <el-dialog title="预约表格" :visible.sync="dialogVisiable" width="30%" :close-on-click-modal="true"
                  @close="dialogVisiable=false">
         <el-form :model="form" label-position="left" label-width="80px">
 

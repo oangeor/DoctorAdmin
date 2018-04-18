@@ -1,43 +1,77 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// import dashboard from '@/views/dashboard/index'
-// import dashboard from '.
 import Dashboard from '@/views/dashboard'
 import Calendar from '@/views/calendar'
+import Customer from '@/views/customer'
+import Layout from '../views/layout/Layout'
+import SvgIcon from '@/views/svg-icons'
 
 Vue.use(Router);
 
-import Layout from '../views/layout/Layout'
 
 export const constantRouterMap = [
   {
     path: '/dashboard',
     component: Layout,
-    redirect:'/dashboard/index',
+    redirect: '/dashboard/index',
     children: [
       {
         path: 'index',
         component: Dashboard,
         name: 'dashboard',
-        meta: {title: 'dashboard', icon: 'dashboard', noCache: true}
+        meta: {title: 'route.dashboard', icon: 'dashboard', noCache: true}
       }
     ]
   },
   {
-    path: '',
+    path: '/calendar',
     component: Layout,
-    redirect:'calendar',
+    redirect: 'calendar',
     children: [
       {
         path: 'calendar',
         component: Calendar,
         name: 'calendar',
-        meta: {title: 'calendar', icon: 'calendar', noCache: true}
+        meta: {title: 'route.calendar', icon: 'component', noCache: true}
+      }
+    ]
+  },
+  {
+    path: '',
+    redirect: '/customer'
+  },
+  {
+    path: '/customer',
+    component: Layout,
+    redirect: '/customer/index',
+    children: [
+      {
+        path: 'index',
+        component: Customer,
+        name: 'customer',
+        meta: {title: 'route.customer', icon: 'people', noCache: true}
       }
     ]
   }
 ]
+
+export const asyncRouterMap = [
+
+  //
+  // {
+  //   path: '/icon',
+  //   component: Layout,
+  //   children: [{
+  //     path: 'index',
+  //     component: SvgIcon,
+  //     name: 'icons',
+  //     meta: {title: 'icons', icon: 'icon', noCache: true}
+  //   }]
+  // }
+
+
+  ]
 
 export default new Router({
   routes: constantRouterMap

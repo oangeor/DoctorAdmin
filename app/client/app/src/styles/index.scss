@@ -1,6 +1,21 @@
 @import "./element-ui";
 @import "./sidebar";
+//global style
 
+a:focus,
+a:active{
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover{
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+// multiselect style
 .multiselect {
   font-size: 12px;
   line-height: 12px;

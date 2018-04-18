@@ -5,7 +5,8 @@
                   :key="item.children[0].name">
         <el-menu-item :index="item.path+'/'+item.children[0].path" :class="{'submemu-title-noDropDown':false}">
         <!--<el-menu-item :index="item.path+'/'+item.children[0].path" :class="{'submemu-title-noDropDown':!isNest}">-->
-          <span v-if="item.children[0].meta&&item.children[0].meta.title">{{item.children[0].meta.title}}</span>
+          <svg-icon v-if="item.children[0].meta&&item.children[0].meta.icon" :icon-class="item.children[0].meta.icon"></svg-icon>
+          <span v-if="item.children[0].meta&&item.children[0].meta.title">{{$t(item.children[0].meta.title)}}</span>
         </el-menu-item>
 
       </router-link>

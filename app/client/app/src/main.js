@@ -13,6 +13,10 @@ import './mock'
 
 import '@/styles/index.scss'
 
+import i18n from './lang'
+
+import './icons'
+
 Vue.use(Element, {size: 'medium'})
 
 Vue.config.productionTip = false
@@ -23,6 +27,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   components: {App},
   template: '<App/>'
 })

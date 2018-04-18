@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>Calendar</h1>
+  <div class="calendar-container">
     <scheduler></scheduler>
   </div>
 
@@ -16,5 +15,7 @@
 </script>
 
 <style scoped>
-
+.calendar-container{
+  padding: 20px;
+}
 </style>
