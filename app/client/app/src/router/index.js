@@ -7,6 +7,9 @@ import Customer from '@/views/customer'
 import Layout from '../views/layout/Layout'
 import SvgIcon from '@/views/svg-icons'
 
+const _import = require('./_import_' + process.env.NODE_ENV)
+
+
 Vue.use(Router);
 
 
@@ -18,7 +21,7 @@ export const constantRouterMap = [
     children: [
       {
         path: 'index',
-        component: Dashboard,
+        component: _import('dashboard/index'),
         name: 'dashboard',
         meta: {title: 'route.dashboard', icon: 'dashboard', noCache: true}
       }
@@ -71,7 +74,7 @@ export const asyncRouterMap = [
   // }
 
 
-  ]
+]
 
 export default new Router({
   routes: constantRouterMap
