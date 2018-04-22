@@ -20,7 +20,6 @@
       </div>
     </el-menu>
     <div class="scheduler-table" v-if="schedulerEvents" v-loading="loading">
-
       <template v-for="item in schedulerEvents">
         <el-row class="event-row">
           <el-col :span="1" class="event-hour">
@@ -420,10 +419,10 @@
               background: $blue;
             }
             .h2-event {
-              background: red;
+              background: #f56c6c;
             }
             .h3-event {
-              background: green;
+              background: #67C23A;
             }
           }
         }

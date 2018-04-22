@@ -6,15 +6,9 @@ export function getToken() {
   return Cookies.get(TokenKey)
 }
 
-// export function () {
-
-// }
 
 export function setToken(token) {
-  // console.log("setToken", token)
-  // Cookies.set(TokenKey, token)
-  // console.log(Cookies.get(TokenKey))
-  return Cookies.set(TokenKey, token)
+  return Cookies.set(TokenKey, token, {expires: 7})
 }
 
 export function removeToken() {

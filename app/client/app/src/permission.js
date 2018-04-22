@@ -1,20 +1,29 @@
 import router from './router'
 import {getToken} from "./utils/auth";
+import store from './store'
 
 const whiteList = ['/login']
 router.beforeEach((to, from, next) => {
-  console.log(to.path)
   if (getToken()) {
-    console.log("got token")
     if (to.path === '/login') {
       console.log("login to")
       next({path: '/'})
-    } else {
-      console.log("other to")
-      next()
+    }
+
+    else {
+      console.log("got token not login")
+      if (store.getters.user_name === '') {
+        store.dispatch('GetUserInfo').then(res => {
+          next()
+        }).catch(() => {
+          console.log("error!!!!")
+        })
+      } else {
+        next()
+      }
+
     }
   } else {
-    console.log("no token")
     if (whiteList.indexOf(to.path) !== -1) {
       console.log("whitelist")
       next()

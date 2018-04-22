@@ -28,11 +28,26 @@ const user = {
         })
       })
     },
-    Logout({commit, state}){
-      return new Promise((resolve, reject)=>{
+    Logout({commit, state}) {
+      return new Promise((resolve, reject) => {
 
       })
     },
+    GetUserInfo({commit, state}) {
+      return new Promise((resolve, reject) => {
+        loginApi.getUserInfo().then(response => {
+          if (!response.data) {
+            reject('error')
+          }
+          const data = response.data
+          commit('SET_NAME', data.username)
+          resolve(response)
+        }).catch(error=>{
+          reject(error)
+        })
+
+      })
+    }
   }
 
 
