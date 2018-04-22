@@ -17,6 +17,8 @@ import i18n from './lang'
 
 import './icons'
 
+import './permission'
+
 Vue.use(Element, {size: 'medium'})
 
 Vue.config.productionTip = false

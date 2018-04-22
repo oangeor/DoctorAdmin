@@ -5,4 +5,4 @@ import customerApi from './customer'
 
 // Mock.mock(/\/login\/login/, 'post')
 Mock.mock(/\/events\/date_events/, 'get', eventsApi.getDateEvents)
-Mock.mock(/\/customer\/show/, 'get', customerApi.getList)
+// Mock.mock(/\/customers/, 'get', customerApi.getList)

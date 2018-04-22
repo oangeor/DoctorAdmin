@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input placeholder="姓名" style="width: 150px"></el-input>
-      <el-input placeholder="手机号" style="width: 250px"></el-input>
-      <el-button type="primary" icon="el-icon-search">搜索</el-button>
-      <el-button type="primary" icon="el-icon-edit" >添加</el-button>
+      <el-input placeholder="姓名" style="width: 150px" v-model="queryName"></el-input>
+      <el-input placeholder="手机号" style="width: 250px" v-model="queryPhone"></el-input>
+      <el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
+      <el-button type="primary" icon="el-icon-edit" @click="handleCreate">添加</el-button>
     </div>
     <el-table :key="0" :data="list" v-loading="listLoading" element-loading-text="正在载入" border fit
               highlight-current-row="">
@@ -15,16 +15,44 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="姓名" width="600">
+      <el-table-column align="center" label="姓名" width="150">
         <template slot-scope="scope">
           <span>{{scope.row.name}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="手机号" width="600">
+
+      <el-table-column align="center" label="性别" width="100">
+        <template slot-scope="scope">
+          <span v-if="scope.row.sex == 1">男</span>
+          <span v-else>女</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="年龄" width="100">
+        <template slot-scope="scope">
+          <span>{{scope.row.age}}</span>
+
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="手机号" width="250">
         <template slot-scope="scope">
           <span>{{scope.row.phone}}</span>
         </template>
       </el-table-column>
+
+      <el-table-column align="center" label="电子邮箱" width="300">
+        <template slot-scope="scope">
+          <span>{{scope.row.email}}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column align="center" label="住址" width="500">
+        <template slot-scope="scope">
+          <span>{{scope.row.address}}</span>
+        </template>
+      </el-table-column>
+
 
       <el-table-column align="center" label="操作" width="230" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -46,11 +74,10 @@
         </el-form-item>
 
         <el-form-item label="性别" style="width: 200px">
-          <el-radio-group v-model="customerForm.gender">
-            <el-radio label="1">男</el-radio>
-            <el-radio label="2">女</el-radio>
+          <el-radio-group v-model="customerForm.sex">
+            <el-radio :label="1">男</el-radio>
+            <el-radio :label="2">女</el-radio>
           </el-radio-group>
-          <!--<el-input v-model="customerForm.gender"></el-input>-->
         </el-form-item>
 
         <el-form-item label="手机号" style="width: 300px">
@@ -81,12 +108,14 @@
 
 <script>
 
-  import {getCustomer} from '@/api/customer'
+  import customerApi from '@/api/customer'
 
   export default {
     name: 'customer',
     data() {
       return {
+        queryName: '',
+        queryPhone: '',
         listLoading: false,
         list: null,
         textMap: {
@@ -97,7 +126,7 @@
         customerForm: {
           name: '',
           phone: '',
-          gender: '',
+          sex: '',
           age: '',
           address: ''
         },
@@ -108,32 +137,83 @@
     created() {
       this.fetchCustomer()
     },
-    mounted(){
-      console.log(this)
-    },
     methods: {
+      resetForm() {
+        this.customerForm = {
+          name: '',
+          phone: '',
+          sex: '',
+          age: '',
+          address: ''
+        }
+      },
       fetchCustomer() {
-        getCustomer().then(response => {
-          console.log(response.data)
-          console.log(response.data)
+        customerApi.getCustomer().then(response => {
           this.list = response.data
         }).catch(error => {
           console.log(error)
         })
       },
       createCustomer() {
+
+        customerApi.createCustomer(this.customerForm).then(
+          response => {
+            this.$notify({
+              title: '成功',
+              message: "创建成功",
+              type: 'success',
+              duration: 2000,
+            })
+            this.dialogVisible = false
+            this.fetchCustomer()
+          }
+        ).catch(error => console.log(error))
+
+
       },
       updateCustomer() {
+        customerApi.update(this.customerForm).then(
+          response => {
+            this.$notify({
+              title: '成功',
+              message: "修改成功",
+              type: 'success',
+              duration: 2000,
+            })
+            this.dialogVisible = false
+            this.fetchCustomer()
+          }
+        )
       },
       openEditForm(row) {
         this.customerForm = Object.assign({}, row)
+        this.customerForm.sex = row.sex.toString()
         this.dialogStatus = 'update'
         this.dialogVisible = true
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
           this.$refs['dataForm'].clearValidate()
         })
+      },
+      handleCreate() {
+        this.dialogStatus = 'create'
+        // this.resetForm()
+        this.dialogVisible = true
+      },
+      handleSearch() {
+        if (!this.queryName.trim() && !this.queryPhone.trim()) {
+          this.fetchCustomer()
+        } else {
+          const query = {
+            name: this.queryName,
+            phone: this.queryPhone
+          }
+          customerApi.search(query).then(
+            response => {
+              this.list = response.data
+            }
+          )
+        }
       }
-
     }
   }
 </script>

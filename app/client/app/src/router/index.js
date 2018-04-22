@@ -5,6 +5,7 @@ import Dashboard from '@/views/dashboard'
 import Calendar from '@/views/calendar'
 import Customer from '@/views/customer'
 import Layout from '../views/layout/Layout'
+import Login from '../views/login'
 import SvgIcon from '@/views/svg-icons'
 
 const _import = require('./_import_' + process.env.NODE_ENV)
@@ -21,7 +22,8 @@ export const constantRouterMap = [
     children: [
       {
         path: 'index',
-        component: _import('dashboard/index'),
+        // component: _import('dashboard/index'),
+        component: Dashboard,
         name: 'dashboard',
         meta: {title: 'route.dashboard', icon: 'dashboard', noCache: true}
       }
@@ -56,6 +58,11 @@ export const constantRouterMap = [
         meta: {title: 'route.customer', icon: 'people', noCache: true}
       }
     ]
+  },
+  {
+    path: '/login',
+    component: Login,
+    hidden: true,
   }
 ]
 

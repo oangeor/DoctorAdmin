@@ -1,14 +1,22 @@
 import request from '@/utils/request'
-
+import qs from 'qs'
+import Cookies from 'js-cookie'
 export function loginByUsername(username, password) {
-  const data = {
-    username,
-    password
-  }
+  console.log(Cookies.get())
+  const data =
+    qs.stringify(
+      {
+        username: username,
+        password:password,
+      })
   return request({
-    url: '/login/login',
+    url: '/login',
     method: 'post',
+    // withCredentials:true,
     data
   })
 }
 
+export default {
+  loginByUsername
+}

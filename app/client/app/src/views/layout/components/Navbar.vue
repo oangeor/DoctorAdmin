@@ -10,7 +10,7 @@
     <div class="right-menu">
       <el-dropdown>
         <el-button type="primary">
-          权医生 <i class="el-icon-arrow-down el-icon--right"></i>
+          {{userName}} <i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <!--<router-link to="/">-->
@@ -26,7 +26,14 @@
 </template>
 
 <script>
-
+export default {
+  name:'navbar',
+  computed:{
+    userName(){
+      return this.$store.getters.user_name
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
