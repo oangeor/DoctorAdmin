@@ -382,7 +382,6 @@
 </script>
 
 <style lang="scss" scoped>
-  $blue: #409eff;
   @mixin hover {
     background: #337ecc;
     cursor: pointer;
