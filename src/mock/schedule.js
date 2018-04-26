@@ -38,5 +38,10 @@ export default {
     return {
       error: 0
     }
+  },
+  createDateEvent(config){
+    return{
+      error:0
+    }
   }
 }

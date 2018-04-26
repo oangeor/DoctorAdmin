@@ -1,7 +1,6 @@
 import Mock from 'mockjs'
 
 
-
 export default {
   getCustomer: config => {
     // console.log(List)
@@ -10,18 +9,28 @@ export default {
 
     for (let i = 0; i < COUNT; i++) {
       List.push(Mock.mock({
-        id:'@increment',
+        id: '@increment',
         name: '@cname',
-        age:/\d{2}/,
-        sex:/[0-1]/,
+        age: /\d{2}/,
+        sex: /[0-1]/,
         phone: /^1[385][1-9]\d{8}/,
-        email:'fsafj@sfdsa.com',
-        address:/\w{10}/
+        email: 'fsafj@sfdsa.com',
+        address: /\w{10}/
       }))
     }
     return {
-      error:0,
-      data:List
+      error: 0,
+      data: List
     };
+  },
+  updateCustomer(config) {
+    return {
+      error: 0,
+    }
+  },
+  createCustomer(config) {
+    return {
+      error: 0
+    }
   }
 }

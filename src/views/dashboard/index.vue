@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard-container">
         <div class="dashboard-header">
-            <h3>今日工作</h3>
+            <span>今日工作</span>
         </div>
         <div class="dashboard-content">
             <div class="today-statics">
@@ -30,21 +30,18 @@
 
             <div class="list-content">
                 <div class="list-index-menu">
-                    <el-menu
-                            @open="handleOpen"
-                            @select="handleSelect"
-                    >
+                    <el-menu @open="handleOpen" @select="handleSelect">
                         <el-menu-item index="1">
                             <i class="el-icon-location"></i>
                             <span>今日挂号</span>
                         </el-menu-item>
                         <el-menu-item index="2">
                             <i class="el-icon-location"></i>
-                            <span> 待收费</span>
+                            <span> 今日收费</span>
                         </el-menu-item>
                         <el-menu-item index="3">
                             <i class="el-icon-location"></i>
-                            <span> 已付清</span>
+                            <span> 今日付清</span>
                         </el-menu-item>
                         <el-menu-item index="4">
                             <i class="el-icon-location"></i>
@@ -111,7 +108,7 @@
           Message({
             message:"后续功能开发中, 敬请期待",
             type: "warning",
-            duration: 3 * 1000
+            duration: 1 * 1000
           })
         }
 
@@ -134,10 +131,15 @@
         line-height: 3.05rem;
         border-bottom: 1px solid #dbdbdb;
         background: white;
+        text-align: left;
+        span{
+            margin-left: 30px;
+            color: #333;
+        }
     }
 
     .dashboard-content {
-        padding: 1rem;
+        margin-top: 1rem;
         height: 100%;
     }
 
@@ -188,5 +190,12 @@
     .dynamic-content {
         margin-left: 13rem;
         padding: 20px;
+    }
+
+    .el-menu-item{
+        /*width: 100px;*/
+        span{
+            width: 50px;
+        }
     }
 </style>
