@@ -1,38 +1,42 @@
-const generateEvents = () => {
-  let eventItems = [];
-  for (let i = 0; i < 15; i++) {
-    let eventItem;
-    const hour = 6 + i + ":00";
-    eventItem = {
-      hour: hour
-    }
-    eventItem.events = []
-    if (Math.random() < 0.33) {
-      for (let i = 0; i < 9; i++) {
-        if (Math.random() > 0.33) {
-          eventItem.events.push(
-            {
-              customer: {
-                id: 1,
-                name: '王大拿',
-              },
-            }
-          )
-        }
-      }
-    }
-    eventItems.push(eventItem)
-  }
-  return eventItems
-}
-
-// const scheduleEvents = generateEvents()
+import Mock from "mockjs";
 
 export default {
   getDateEvents: config => {
-    const events = generateEvents()
-    console.log('Be mocked')
-    console.log(events)
-    return events
+    let events = []
+    for (let i = 0; i < 10; i++) {
+      const startHour = 8
+      if (Math.random() > 0.33) {
+        continue
+      }
+      const bookTime = `${startHour + i}:00`
+      events.push(Mock.mock({
+        bookTime: bookTime,
+        id: '@increment',
+        customer: {
+          id: '@increment',
+          name: '@cname',
+          phone: /^1[385][1-9]\d{8}/,
+
+
+        },
+        regType: '初诊',
+        doctor: {
+          id:'@increment',
+          name:'@cname(1)'
+        },
+        memo: 'ffsdfsdsd'
+      }))
+
+    }
+    return {
+      error: 0,
+      data: events
+    };
+  },
+
+  updateDateEvent(config) {
+    return {
+      error: 0
+    }
   }
 }

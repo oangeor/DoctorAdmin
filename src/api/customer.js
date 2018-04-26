@@ -5,7 +5,7 @@ export function getCustomer(query) {
   console.log(query)
   return request({
     url: '/customer/list',
-    method: 'get',
+    method: 'post',
   })
 
 }

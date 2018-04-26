@@ -15,7 +15,5 @@
 </script>
 
 <style scoped>
-.calendar-container{
-  padding: 20px;
-}
+
 </style>

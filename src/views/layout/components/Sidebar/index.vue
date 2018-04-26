@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu mode="vertical" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
+    <el-menu mode="vertical" >
       <sidebar-item :routes="permission_routers"></sidebar-item>
     </el-menu>
   </div>

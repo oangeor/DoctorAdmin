@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <template v-for="item in routes" v-if="!item.hidden && item.children">
-      <router-link v-if="hasOneShowingChildren(item.children)" :to="item.path+'/'+item.children[0].path"
-                  :key="item.children[0].name">
-        <el-menu-item :index="item.path+'/'+item.children[0].path" :class="{'submemu-title-noDropDown':false}">
-        <!--<el-menu-item :index="item.path+'/'+item.children[0].path" :class="{'submemu-title-noDropDown':!isNest}">-->
-          <svg-icon v-if="item.children[0].meta&&item.children[0].meta.icon" :icon-class="item.children[0].meta.icon"></svg-icon>
-          <span v-if="item.children[0].meta&&item.children[0].meta.title">{{$t(item.children[0].meta.title)}}</span>
-        </el-menu-item>
+    <el-menu class="sidemenu">
+        <template v-for="item in routes" v-if="!item.hidden && item.children">
+            <router-link v-if="hasOneShowingChildren(item.children)" :to="item.path+'/'+item.children[0].path"
+                         :key="item.children[0].name">
+                <el-menu-item :index="item.path+'/'+item.children[0].path" :class="{'submemu-title-noDropDown':false}">
+                    <!--<el-menu-item :index="item.path+'/'+item.children[0].path" :class="{'submemu-title-noDropDown':!isNest}">-->
+                    <svg-icon v-if="item.children[0].meta&&item.children[0].meta.icon"
+                              :icon-class="item.children[0].meta.icon"></svg-icon>
+                    <span v-if="item.children[0].meta&&item.children[0].meta.title">{{$t(item.children[0].meta.title)}}</span>
+                </el-menu-item>
 
-      </router-link>
-    </template>
-  </div>
+            </router-link>
+        </template>
+    </el-menu>
 </template>
-z
 <script>
   export default {
     name: "SidebarItem",
@@ -37,6 +37,9 @@ z
   }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    .sidemenu {
+        /*width: 20px;*/
+        /*color: white;*/
+    }
 </style>
