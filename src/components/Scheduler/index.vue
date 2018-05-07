@@ -38,8 +38,11 @@
                       <el-row>
                         <template v-for="event in events_hospital">
                           <el-col :span="8" class="event">
-                            <span @click.stop="handleEdit(event)"
-                                  :class="`h${event.hospital_id}-event`">{{event.customer.name}}</span>
+                            <!-- <span @click.stop="handleEdit(event)" :class="`h${event.hospital_id}-event`">{{event.customer.name}}</span> -->
+                            <span @click.stop="handleEdit(event)" v-if="event.hospital_id==1" :class="{'h1-event':event.hospital_id==1,special:event.special===true}">{{event.customer.name}}</span>
+                            <span @click.stop="handleEdit(event)" v-else-if="event.hospital_id==2" :class="{'h2-event':event.hospital_id==2,special:event.special===true}">{{event.customer.name}}</span>
+                            <span @click.stop="handleEdit(event)" v-else :class="{'h3-event':event.hospital_id==3,special:event.special===true}">{{event.customer.name}}</span>
+                          
                           </el-col>
                         </template>
                       </el-row>
@@ -108,10 +111,17 @@
           </el-form-item>
 
           <el-form-item label="开始时间" style="width: 300px">
-            <el-row>
-              <el-col :span="24">{{form.bookTime}}</el-col>
-              <!--<el-col :span="12">11:00</el-col>-->
-            </el-row>
+            <el-date-picker :disabled="true"
+            v-model="form.bookTime"
+            type="datetime"
+            placeholder="选择时间"
+            value-format="yyyy-MM-dd HH:mm"
+            >
+            </el-date-picker>
+          </el-form-item>
+
+          <el-form-item label="特殊标记" style="width: 100px">
+            <el-checkbox v-model="form.special"></el-checkbox>
           </el-form-item>
 
           <el-form-item label="备注" style="width: 300px">
@@ -123,8 +133,10 @@
 
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogVisiable=false">取消</el-button>
+          <!-- <el-button type="danger" @click="DeleteEvent" v-if="dialogStatus!=='create'">删除</el-button> -->
           <el-button type="success" @click="createEvent" v-if="dialogStatus==='create'">新建</el-button>
           <el-button type="success" @click="updateEvent" v-else>更改</el-button>
+          
         </div>
       </el-dialog>
 
@@ -159,7 +171,10 @@
           name: '',
           phone: '',
           hospital: '',
-          bookTime: ''
+          // bookTimeDate: '',
+          // bookTimeHour: '',
+          bookTime: '',
+          special:false,
         },
         hospitalOptions: [
           {
@@ -207,8 +222,6 @@
       this.initData()
     },
     watch: {
-      form() {
-      },
       pickerDate() {
         this.pickNewDate()
       }
@@ -221,7 +234,8 @@
           name: '',
           phone: '',
           hospital: '',
-          bookTime: ''
+          bookTime: '',
+          special:false
         }
       },
       createEvent() {
@@ -250,6 +264,10 @@
         })
       },
       updateEvent() {
+        console.log(this.form)
+        // console.log(typeof(this.form.bookTime))
+        
+        // return 
         this.$refs.form.validate(valid => {
           if (!valid) {
             return
@@ -268,12 +286,30 @@
           ).catch(error => console.error(error))
         })
       },
+      DeleteEvent(event){
+        eventApi.deleteDateEvent(this.form).then(
+            response => {
+              this.$notify({
+                title: '成功',
+                message: "删除成功",
+                type: 'success',
+                duration: 2000,
+              })
+              this.dialogVisiable = false
+              this.getDateEvents(formatDate(this.pickerDate))
+            }
+          ).catch(error => console.error(error))
+      },
+
+
       handleAdd(eventsLength, hour) {
         if (eventsLength < 3) {
           this.dialogVisiable = true
           this.dialogStatus = 'create'
           this.resetForm()
           this.form.bookTime = formatDate(this.pickerDate) + ' ' + hour
+          // this.form.bookTimeDate = formatDate(this.pickerDate)
+          // this.form.bookTimeHour = hour
         }
         else {
         }
@@ -288,7 +324,8 @@
           name: event.customer.name,
           phone: event.customer.phone,
           hospital: event.hospital_id,
-          bookTime: event.bookingTime
+          bookTime: event.bookingTime,
+          special:event.special,
         }
         this.dialogStatus = 'update'
         this.dialogVisiable = true
@@ -465,6 +502,9 @@
             }
             .h3-event {
               background: #67C23A;
+            }
+            .special{
+              background: #8e44ad
             }
           }
         }

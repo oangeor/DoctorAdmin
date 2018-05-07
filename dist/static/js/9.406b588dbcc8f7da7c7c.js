@@ -1,0 +1,2 @@
+webpackJsonp([9],{BoPo:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a={render:function(){var e=this.$createElement,t=this._self._c||e;return t("section",{staticClass:"app-main"},[t("transition",{attrs:{name:"fade",mode:"out-in"}},[t("router-view")],1)],1)},staticRenderFns:[]};var i=n("VU/8")({name:"AppMain"},a,!1,function(e){n("Defi")},"data-v-4ebb5fdc",null);t.default=i.exports},Defi:function(e,t){}});
+//# sourceMappingURL=9.406b588dbcc8f7da7c7c.js.map

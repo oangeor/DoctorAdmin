@@ -22,6 +22,7 @@ export function createDateEvents(event) {
         memo: event.memo,
         name: event.name,
         phone: event.phone,
+        special:event.special,
       })
 
   return request({
@@ -41,9 +42,23 @@ export function updateDateEvent(event) {
         hospital_id: event.hospital,
         memo: event.memo,
         bookingTime: event.bookTime,
+        special:event.special,
       })
   return request({
     url: '/event/update',
+    method: 'post',
+    data
+  })
+}
+
+export function deleteDateEvent(event) {
+  const data =
+    qs.stringify(
+      {
+        event_id: event.event_id,
+      })
+  return request({
+    url: '/event/delete',
     method: 'post',
     data
   })
@@ -53,5 +68,6 @@ export function updateDateEvent(event) {
 export default {
   getDateEvents,
   createDateEvents,
-  updateDateEvent
+  updateDateEvent,
+  deleteDateEvent,
 }
