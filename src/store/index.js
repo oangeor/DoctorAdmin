@@ -4,7 +4,7 @@ import permission from './modules/permission'
 import schedule from './modules/schedule'
 import user from './modules/user'
 
-Vue.use(Vuex)
+// Vue.use(Vuex)
 
 const getters = {
   permission_routers: (state) => {

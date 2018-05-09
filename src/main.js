@@ -6,8 +6,8 @@ import router from './router'
 import store from './store'
 
 import 'normalize.css'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import ELEMENT from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 
 import './mock'
 
@@ -19,7 +19,7 @@ import './icons'
 
 import './permission'
 
-Vue.use(Element, {size: 'medium'})
+Vue.use(ELEMENT, {size: 'medium'})
 
 Vue.config.productionTip = false
 
