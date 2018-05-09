@@ -7,7 +7,7 @@
       <el-button type="primary" icon="el-icon-edit" @click="handleCreate">添加</el-button>
     </div>
     <el-table :key="0" :data="list" v-loading="listLoading" element-loading-text="正在载入" border fit
-              highlight-current-row="">
+              highlight-current-row="" @row-click="rowClick">
 
       <el-table-column align="center" label="id" width="100">
         <template slot-scope="scope">
@@ -101,6 +101,11 @@
       </div>
     </el-dialog>
 
+
+    <right-slider width="760px" title="详细信息" :visible.sync="isShowRightSlide">
+      <slider-content :model="currentScheduler" :customerInfo="customerInfo"></slider-content>
+    </right-slider>
+
   </div>
 
 
@@ -109,14 +114,17 @@
 <script>
 
   import customerApi from '@/api/customer'
+  import SliderContent from './components/SliderContent'
+  import RightSlider from '@/components/RightSlider'
 
   export default {
     name: 'customer',
     data() {
       return {
         // radio:"2",
-
-
+        currentScheduler:{},
+        customerInfo:{},
+        isShowRightSlide:false,
         queryName: '',
         queryPhone: '',
         listLoading: false,
@@ -146,6 +154,10 @@
           ],
         }
       }
+    },
+    components: {
+      RightSlider,
+      SliderContent,
     },
     created() {
       this.fetchCustomer()
@@ -241,7 +253,20 @@
             }
           )
         }
+      },
+      rowClick(row) {
+        this.currentScheduler = row
+        console.log(row)
+        this.isShowRightSlide = true
+        this.retriveCustomer(row.id)
+      },
+            retriveCustomer(customer_id) {
+        customerApi.retriveCustomer(customer_id).then(res => {
+          console.log(res.data)
+          this.customerInfo = res.data;
+        })
       }
+
     }
   }
 </script>
