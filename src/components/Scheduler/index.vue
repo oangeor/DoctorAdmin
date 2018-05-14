@@ -111,7 +111,7 @@
           </el-form-item>
 
           <el-form-item label="开始时间" style="width: 300px">
-            <el-date-picker :disabled="true"
+            <el-date-picker
             v-model="form.bookTime"
             type="datetime"
             placeholder="选择时间"
@@ -303,7 +303,7 @@
 
 
       handleAdd(eventsLength, hour) {
-        if (eventsLength < 3) {
+        if (eventsLength < 6) {
           this.dialogVisiable = true
           this.dialogStatus = 'create'
           this.resetForm()
@@ -472,8 +472,8 @@
   .scheduler-table {
     margin-top: 10px;
     .event-row {
-      height: 45px;
-      line-height: 45px;
+      height: 85px;
+      line-height: 85px;
       border: 1px solid #CECECE;
       .event-hour {
         display: inline-block;
@@ -493,6 +493,11 @@
               height: 40px;
               line-height: 40px;
               border-radius: 8px;
+              // text-overflow: ellipsis!important;
+              // white-space: normal!important;
+              // overflow: hidden!important;
+              margin-bottom: 3px;
+              float: left;
             }
             .h1-event {
               background: $blue;
