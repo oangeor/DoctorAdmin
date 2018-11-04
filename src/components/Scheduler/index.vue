@@ -133,7 +133,7 @@
 
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogVisiable=false">取消</el-button>
-          <!-- <el-button type="danger" @click="DeleteEvent" v-if="dialogStatus!=='create'">删除</el-button> -->
+          <el-button type="danger" @click="DeleteEvent" v-if="dialogStatus!=='create'">删除</el-button>
           <el-button type="success" @click="createEvent" v-if="dialogStatus==='create'">新建</el-button>
           <el-button type="success" @click="updateEvent" v-else>更改</el-button>
           
