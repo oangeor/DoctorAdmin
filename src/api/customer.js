@@ -68,6 +68,7 @@ export function updateCustomer(customer) {
         isRevisit:customer.isRevisit,
         isDeal:customer.isDeal,
         isConsumed:customer.isConsumed,
+        character:customer.character,
         pct:customer.pct,
         repurchaseRate:customer.repurchaseRate,
         jieshaoRate:customer.jieshaoRate,

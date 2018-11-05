@@ -42,7 +42,7 @@
       </el-table-column>
 
 
-      <el-table-column align="center" label="操作" width="230"  class-name="small-padding fixed-width">
+      <el-table-column align="center" label="操作" width="70"  fixed="right" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click.stop="handleUpdate(scope.row)">编辑</el-button>
         </template>
@@ -76,10 +76,10 @@
         </template>
       </el-table-column>
 
-            <el-table-column align="center" label="是否初诊" width="80">
+            <el-table-column align="center" label="初/复诊" width="80">
         <template slot-scope="scope">
-          <span v-if="scope.row.isFirst == 1">初诊</span>
-          <span v-else>复诊</span>
+          <span v-if="scope.row.isFirst == 1">复诊</span>
+          <span v-else>初诊</span>
         </template>
       </el-table-column>
 
@@ -123,7 +123,7 @@
 
         <el-table-column align="center" label="消费" width="50">
         <template slot-scope="scope">
-          <span v-if="scope.row.isConsume == 1">是</span>
+          <span v-if="scope.row.isConsumed == 1">是</span>
           <span v-else>否</span>
         </template>
       </el-table-column>
@@ -228,10 +228,10 @@
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="是否初诊" style="width: 200px">
+        <el-form-item label="初/复诊" style="width: 200px">
           <el-radio-group v-model="customerForm.isFirst">
-            <el-radio label="1">初</el-radio>
-            <el-radio label="2">复</el-radio>
+            <el-radio label="1">复</el-radio>
+            <el-radio label="2">初</el-radio>
           </el-radio-group>
         </el-form-item>
 
@@ -375,11 +375,6 @@
     methods: {
       resetForm() {
         this.customerForm = {
-          name: '',
-          phone: '',
-          sex: '',
-          age: '',
-          address: ''
         }
       },
       fetchCustomer() {
