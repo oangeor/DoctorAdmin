@@ -8,10 +8,10 @@
           @open="handleOpen"
           @close="handleClose">
           <el-menu-item index="1">
-            <span slot="title">导航二</span>
+            <span slot="title">今日挂号</span>
           </el-menu-item>
           <el-menu-item index="2" >
-            <span slot="title">导航三</span>
+            <span slot="title"></span>
           </el-menu-item>
           <el-menu-item index="3">
             <span slot="title">导航四</span>

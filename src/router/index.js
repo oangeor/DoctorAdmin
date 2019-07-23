@@ -54,6 +54,21 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/employee',
+    component: _import('layout/index'),
+    redirect: '/employee/index',
+    children: [
+      {
+        path: 'index',
+        component: _import('employee/index'),
+        name: 'employee',
+        meta: {title: 'route.employee', icon: 'people', noCache: true}
+      }
+    ]
+  },
+
+
+  {
     path: '/login',
     component: _import('login/index'),
     hidden: true,

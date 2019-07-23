@@ -12,6 +12,7 @@
     "build:sit": "cross-env NODE_ENV=sit env_config=sit node build/build.js"
   },
   "dependencies": {
+    "@toast-ui/vue-calendar": "^1.1.0",
     "axios": "^0.18.0",
     "element-ui": "^2.3.3",
     "js-cookie": "^2.2.0",
