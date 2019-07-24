@@ -2,18 +2,24 @@
   <div class="wrapper">
     <ul>
       <li>
-        xxx
-        <div class="number">100</div>
+        今日新增
+        <div class="number">
+          <em>100</em>
+        </div>
       </li>
 
       <li>
-        xxx
-        <div class="number">100</div>
+        今日预约
+        <div class="number">
+          <em>100</em>
+        </div>
       </li>
 
       <li>
-        xxx
-        <div class="number">100</div>
+        今日
+        <div class="number">
+          <em>100</em>
+        </div>
       </li>
     </ul>
   </div>
@@ -25,21 +31,40 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  /*@import "~@/styles/mixin.scss";*/
+
   .wrapper {
     overflow: hidden;
-    border: 1px solid #e6e7f3;
     padding: 1rem;
     margin-bottom: 1rem;
+    @include my-border;
   }
 
   ul {
     list-style: none;
     margin: 0;
+    overflow: hidden;
+    padding: 0;
+    color: #999;
+    font-style: normal;
+    font-size: .7rem;
   }
 
   ul li {
     float: left;
     margin-right: 3rem;
   }
+
+  .number {
+    padding-top: .72rem;
+    em{
+      font-size: 1.2rem;
+      color: #7a80fa;
+      padding-right: .3em;
+      font-style: normal;
+
+    }
+  }
+
 </style>

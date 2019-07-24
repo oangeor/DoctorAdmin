@@ -99,82 +99,82 @@
         </template>
       </el-table-column>
 
-                 <el-table-column align="center" label="固定矫治" width="200">
-        <template slot-scope="scope">
-          <span>{{scope.row.guding}}</span>
-        </template>
-      </el-table-column>
+                 <!--<el-table-column align="center" label="固定矫治" width="200">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.guding}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
 
 
-        <el-table-column align="center" label="回访" width="50">
-        <template slot-scope="scope">
-          <span v-if="scope.row.isRevisit == 1">是</span>
-          <span v-else>否</span>
-        </template>
-      </el-table-column>
+        <!--<el-table-column align="center" label="回访" width="50">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span v-if="scope.row.isRevisit == 1">是</span>-->
+          <!--<span v-else>否</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-        <el-table-column align="center" label="成交" width="50">
-        <template slot-scope="scope">
-          <span v-if="scope.row.isDeal == 1">是</span>
-          <span v-else>否</span>
-        </template>
-      </el-table-column>
+        <!--<el-table-column align="center" label="成交" width="50">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span v-if="scope.row.isDeal == 1">是</span>-->
+          <!--<span v-else>否</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-        <el-table-column align="center" label="消费" width="50">
-        <template slot-scope="scope">
-          <span v-if="scope.row.isConsumed == 1">是</span>
-          <span v-else>否</span>
-        </template>
-      </el-table-column>
+        <!--<el-table-column align="center" label="消费" width="50">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span v-if="scope.row.isConsumed == 1">是</span>-->
+          <!--<span v-else>否</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-           <el-table-column align="center" label="性格分类" width="150">
-        <template slot-scope="scope">
-          <span>{{scope.row.character}}</span>
-        </template>
-      </el-table-column>
+           <!--<el-table-column align="center" label="性格分类" width="150">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.character}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-                 <el-table-column align="center" label="客单价" width="80">
-        <template slot-scope="scope">
-          <span>{{scope.row.pct}}</span>
-        </template>
-      </el-table-column>
+      <!--<el-table-column align="center" label="客单价" width="80">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.pct}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-           <el-table-column align="center" label="复购率" width="80">
-        <template slot-scope="scope">
-          <span>{{scope.row.repurchaseRate}}</span>
-        </template>
-      </el-table-column>
+           <!--<el-table-column align="center" label="复购率" width="80">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.repurchaseRate}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-           <el-table-column align="center" label="转介绍率" width="80">
-        <template slot-scope="scope">
-          <span>{{scope.row.jieshaoRate}}</span>
-        </template>
-      </el-table-column>
+           <!--<el-table-column align="center" label="转介绍率" width="80">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.jieshaoRate}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
-           <el-table-column align="center" label="vip" width="80">
-        <template slot-scope="scope">
-          <span>{{scope.row.vip}}</span>
-        </template>
-      </el-table-column>
-      
-      <el-table-column align="center" label="评分" width="80">
-        <template slot-scope="scope">
-          <span>{{scope.row.score}}</span>
-        </template>
-         </el-table-column>
-      <el-table-column align="center" label="电子邮箱" width="120">
-        <template slot-scope="scope">
-          <span>{{scope.row.email}}</span>
-        </template>
-      </el-table-column>
+           <!--<el-table-column align="center" label="vip" width="80">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.vip}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
+      <!---->
+      <!--<el-table-column align="center" label="评分" width="80">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.score}}</span>-->
+        <!--</template>-->
+         <!--</el-table-column>-->
+      <!--<el-table-column align="center" label="电子邮箱" width="120">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.email}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
 
-      <el-table-column align="center" label="住址" width="500">
-        <template slot-scope="scope">
-          <span>{{scope.row.address}}</span>
-        </template>
-      </el-table-column>
+      <!--<el-table-column align="center" label="住址" width="500">-->
+        <!--<template slot-scope="scope">-->
+          <!--<span>{{scope.row.address}}</span>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
 
 
 

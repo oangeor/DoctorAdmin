@@ -10,7 +10,7 @@
           <el-menu-item index="1">
             <span slot="title">今日挂号</span>
           </el-menu-item>
-          <el-menu-item index="2" >
+          <el-menu-item index="2">
             <span slot="title"></span>
           </el-menu-item>
           <el-menu-item index="3">
@@ -26,7 +26,11 @@
   export default {}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+  .left-nav-container {
+    @include my-border;
+  }
 
   .el-menu-vertical {
     width: 150px;

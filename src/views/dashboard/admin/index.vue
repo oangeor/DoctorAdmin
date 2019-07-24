@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <!--<panel-group></panel-group>-->
-    <h1>今日工作安排</h1>
+    <!--<h1>今日工作安排</h1>-->
 
     <header-menu/>
     <div class="left-nav">
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-  import PanelGroup from './components/PanelGroup'
   import SliderContent from './components/SliderContent'
   import RightSlider from '@/components/RightSlider'
   import HeaderMenu from './components/HeaderMenu'
@@ -54,7 +53,6 @@
       }
     },
     components: {
-      PanelGroup,
       RightSlider,
       SliderContent,
       HeaderMenu,
@@ -89,9 +87,9 @@
     }
   }
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .dashboard-container {
-    padding: 20px;
+    height: 100%;
   }
 
   .left-nav{
@@ -100,6 +98,8 @@
 
   .right-container {
     margin-left: 180px;
+    @include my-border;
+    height: 100%;
   }
 
 

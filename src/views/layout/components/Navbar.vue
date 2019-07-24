@@ -1,12 +1,6 @@
 <template>
   <el-menu mode="horizontal" class="navbar">
-    <div class="left-menu">
-      <div class="logo">
-        <a href="/">
-          <img src="@/assets/logo-text.png"></img>
-        </a>
-      </div>
-    </div>
+
     <div class="right-menu">
       <el-dropdown>
         <el-button type="primary">
@@ -42,14 +36,9 @@ export default {
 
 <style lang="scss" scoped>
   .navbar {
-    padding: 0 15px;
     height: 60px;
     line-height: 60px;
 
-    .left-menu{
-      float: left;
-      margin-left: 50px;
-    }
     .right-menu {
       float: right;
     }

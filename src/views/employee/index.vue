@@ -8,8 +8,8 @@
                   maxlength="5"
         ></el-input>
       </el-col>
-      <el-col  :span="2">
-        <el-button type="primary" >搜索</el-button>
+      <el-col :span="2">
+        <el-button type="primary">搜索</el-button>
       </el-col>
     </el-row>
 
@@ -47,10 +47,10 @@
 </script>
 
 <style scoped>
-.search-row{
-  margin-top: 100px;
-}
-  .employee-table{
-    
+  .search-row {
+  }
+
+  .employee-table {
+    height: 70vh;
   }
 </style>
