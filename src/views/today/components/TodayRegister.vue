@@ -6,7 +6,7 @@
       <el-table :key="0" :data="list" v-loading="listLoading" element-loading-text="正在载入" border fit
                 highlight-current-row="" @row-click="rowClick">
 
-        <el-table-column align="center" label="预约时间" width="300">
+        <el-table-column align="center" label="预约时间" width="100">
           <template slot-scope="scope">
             <span>{{scope.row.event.bookingTime}}</span>
           </template>
@@ -26,7 +26,7 @@
         </el-table-column>
 
 
-        <el-table-column align="center" label="备注" width="500">
+        <el-table-column align="center" label="备注">
           <template slot-scope="scope">
             <span>{{scope.row.event.memo}}</span>
           </template>
@@ -45,14 +45,19 @@
 
 <script>
   export default {
-    name: "Event"
+    name: "Event",
+    data(){
+      return{
+        listLoading:false
+      }
+    }
   }
 </script>
 
 <style scoped>
+
   .table-wrapper {
+    /*padding-left: 10px;*/
     background: #fff;
-    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-    border-color: rgba(0, 0, 0, .05);
   }
 </style>

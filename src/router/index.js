@@ -10,15 +10,15 @@ Vue.use(Router);
 
 export const constantRouterMap = [
   {
-    path: '/dashboard',
+    path: '/today',
     component: _import('layout/index'),
-    redirect: '/dashboard/index',
+    redirect: '/today/index',
     children: [
       {
         path: 'index',
-        component: _import('dashboard/index'),
-        name: 'dashboard',
-        meta: {title: 'route.dashboard', icon: 'dashboard', noCache: true}
+        component: _import('today/index'),
+        name: 'today',
+        meta: {title: 'route.today', icon: 'dashboard', noCache: true}
       }
     ]
   },

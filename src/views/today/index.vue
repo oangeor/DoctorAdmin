@@ -4,11 +4,10 @@
     <!--<h1>今日工作安排</h1>-->
 
     <header-menu/>
-    <div class="left-nav">
-      <left-nav/>
-    </div>
-    <div class="right-container">
-      <today-register/>
+
+    <div class="content">
+      <left-nav class="left-nav"/>
+      <today-register class="right-table"/>
     </div>
 
 
@@ -92,15 +91,15 @@
     height: 100%;
   }
 
-  .left-nav{
-    float: left;
-  }
-
-  .right-container {
-    margin-left: 180px;
+  .content{
+    display: flex;
+    flex-flow: row;
     @include my-border;
-    height: 100%;
   }
-
-
+  .left-nav{
+    flex:0 0 100px;
+  }
+  .right-table{
+    flex: 1 1;
+  }
 </style>
