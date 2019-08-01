@@ -5,7 +5,7 @@
         <el-menu
           default-active="1"
           class="el-menu-vertical"
-          >
+        >
           <el-menu-item index="1">
             <span slot="title">今日挂号</span>
           </el-menu-item>

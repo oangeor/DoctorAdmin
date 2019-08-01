@@ -41,14 +41,23 @@
 </template>
 
 <script>
+  import api from "@/api"
   export default {
-    name: "index"
+    name: "employee",
+    data(){
+      return{
+        tableData:{},
+      }
+    },
+    mounted(){
+      console.log("*********")
+      api.employee.employeeList({a:1})
+      console.log("*********")
+    }
   }
 </script>
 
 <style scoped>
-  .search-row {
-  }
 
   .employee-table {
     height: 70vh;
