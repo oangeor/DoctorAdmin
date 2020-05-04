@@ -116,6 +116,7 @@
             type="datetime"
             placeholder="选择时间"
             value-format="yyyy-MM-dd HH:mm"
+            disabled="true"
             >
             </el-date-picker>
           </el-form-item>
