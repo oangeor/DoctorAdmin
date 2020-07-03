@@ -288,7 +288,14 @@
         })
       },
       DeleteEvent(event){
-        eventApi.deleteDateEvent(this.form).then(
+
+        this.$confirm('此操作将永久删除该预约, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+
+          eventApi.deleteDateEvent(this.form).then(
             response => {
               this.$notify({
                 title: '成功',
@@ -300,6 +307,13 @@
               this.getDateEvents(formatDate(this.pickerDate))
             }
           ).catch(error => console.error(error))
+
+        }).catch(() => {
+          // this.$message({
+          //   type: 'info',
+          //   message: '已取消删除'
+          // });
+        })
       },
 
 
